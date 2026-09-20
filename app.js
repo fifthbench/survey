@@ -120,6 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (progressCard) progressCard.style.display = 'block';
     if (cardControls) cardControls.style.display = 'flex';
 
+    // Reset any inline display overrides on survey steps
+    steps.forEach(s => s.style.display = '');
+    const completionStep = document.getElementById('completionStep');
+    if (completionStep) completionStep.style.display = 'none';
+
     // Show active step
     steps.forEach((step, idx) => {
       if (idx === currentStep) {
@@ -544,16 +549,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Reset survey handler
-    document.getElementById('downloadJsonBtn').addEventListener('click', () => {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(userAnswers, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", "fifthbench_survey_response.json");
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-    });
+    // Edit survey handler
+    const editSurveyBtn = document.getElementById('editSurveyBtn');
+    if (editSurveyBtn) {
+      editSurveyBtn.addEventListener('click', () => {
+        currentStep = 0;
+        restoreFormSelections();
+        updateStepView();
+      });
+    }
 
     document.getElementById('restartBtn').addEventListener('click', () => {
       localStorage.removeItem('fifthbench_survey_answers');
