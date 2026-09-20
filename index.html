@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Survey - FifthBench Character Planters</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <div class="app-container">
+    
+    <!-- Brand Header -->
+    <header class="brand-header">
+      <h1 class="brand-logo">FifthBench Survey</h1>
+      <p class="brand-subtitle">Help shape our early 3D printed character planter collection</p>
+    </header>
+
+    <!-- Progress Card Header -->
+    <div class="progress-card">
+      <div class="progress-info">
+        <div class="section-label">
+          <span id="currentSectionName">Demographics</span>
+        </div>
+        <div class="progress-percentage">
+          <span id="currentStepNum">1</span> / 6 (<span id="progressPercentText">17%</span>)
+        </div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="step-indicators">
+        <div class="step-dot active" title="Step 1: Situation">1</div>
+        <div class="step-dot" title="Step 2: Buying Behavior">2</div>
+        <div class="step-dot" title="Step 3: Product Idea">3</div>
+        <div class="step-dot" title="Step 4: Product Choices">4</div>
+        <div class="step-dot" title="Step 5: Brand & Trust">5</div>
+        <div class="step-dot" title="Step 6: Pricing & Feedback">6</div>
+      </div>
+    </div>
+
+    <!-- Alert Notification Banner -->
+    <div class="alert-banner" id="alertBanner"></div>
+
+    <!-- LANDING PAGE -->
+    <div class="landing-card-wrapper" id="landingStep">
+      <div class="card-box landing-box">
+        <div class="landing-hero-badge">
+          FIFTHBENCH PRODUCT RESEARCH
+        </div>
+        <h2 class="landing-title">Shape Our First 3D-Printed Character Planter Collection</h2>
+        <p class="landing-subtitle">
+          We are building original, hand-crafted desk planters designed to bring personality, green energy, and warmth to your workspace. Help us decide which character designs, customisation features, and kit options to launch first!
+        </p>
+
+        <!-- Preview Concept Cards Grid -->
+        <div class="landing-preview-grid">
+          <div class="landing-preview-item">
+            <img src="panda.JPG" alt="Panda Concept" onerror="this.onerror=null; this.src='assets/panda.JPG';">
+            <div class="landing-preview-caption">Concept A: Panda</div>
+          </div>
+          <div class="landing-preview-item">
+            <img src="monk.JPG" alt="Meditating Monk Concept" onerror="this.onerror=null; this.src='assets/monk.JPG';">
+            <div class="landing-preview-caption">Concept B: Monk</div>
+          </div>
+          <div class="landing-preview-item">
+            <img src="monster.JPG" alt="Monster Concept" onerror="this.onerror=null; this.src='assets/monster.JPG';">
+            <div class="landing-preview-caption">Concept C: Monster</div>
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="landing-highlights">
+          <div class="highlight-chip">
+            <span>Takes ~3-4 Minutes</span>
+          </div>
+          <div class="highlight-chip">
+            <span>100% Anonymous</span>
+          </div>
+          <div class="highlight-chip">
+            <span>Early Concept Preview</span>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="landing-cta-group">
+          <button class="btn btn-primary btn-hero" id="startSurveyBtn">
+            <span>Start Survey</span> <span>→</span>
+          </button>
+          <button class="btn btn-secondary btn-hero" id="resumeSurveyBtn" style="display: none;">
+            <span>Resume Saved Survey</span> <span>→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 0: Demographics & Intro -->
+    <div class="survey-step" id="step0">
+      <div class="card-box">
+        <div class="context-banner">
+          <h4>Welcome to FifthBench Research</h4>
+          <p>Thank you for taking a few minutes to help us shape this early character planter idea. This survey is for research only. Your responses remain completely anonymous. It takes around <strong>4-6 minutes</strong> to complete.</p>
+        </div>
+
+        <div class="question-group" data-qid="situation" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            Which best describes your current situation? <span class="required-star">*</span>
+          </div>
+          <div class="question-hint">Select the option that best fits your daily routine</div>
+          <div class="options-grid">
+            <div class="option-card" data-value="Student">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Student</div>
+            </div>
+            <div class="option-card" data-value="Employed">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Employed</div>
+            </div>
+            <div class="option-card" data-value="Business owner">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Business owner</div>
+            </div>
+            <div class="option-card" data-value="Homemaker">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Homemaker</div>
+            </div>
+            <div class="option-card" data-value="Prefer not to say">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Prefer not to say</div>
+            </div>
+            <div class="option-card" data-value="Other">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Other</div>
+            </div>
+          </div>
+          <div class="other-input-container">
+            <input type="text" class="text-input other-text-input" placeholder="Please specify your situation...">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 1: Section 1 — Current Buying Behaviour -->
+    <div class="survey-step" id="step1">
+      <div class="card-box">
+        <h3 class="card-title">Section 1 — Current buying behaviour</h3>
+        <p class="card-description">Understanding your recent decor and gifting habits</p>
+
+        <!-- Q1: Buying 12 Months -->
+        <div class="question-group" data-qid="buying_12m" data-qtype="checkbox" data-required="true">
+          <div class="question-label">
+            Which of these have you bought in the last 12 months? <span class="required-star">*</span>
+          </div>
+          <div class="question-hint">Select all that apply</div>
+          <div class="options-grid">
+            <div class="option-card" data-value="A small gift or decor item">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">A small gift or decor item</div>
+            </div>
+            <div class="option-card" data-value="A plant pot or decorative planter">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">A plant pot or decorative planter</div>
+            </div>
+            <div class="option-card" data-value="A live indoor plant">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">A live indoor plant</div>
+            </div>
+            <div class="option-card" data-value="A personalised gift">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">A personalised gift</div>
+            </div>
+            <div class="option-card" data-value="A company or workplace gift">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">A company or workplace gift</div>
+            </div>
+            <div class="option-card" data-value="None of these">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">None of these</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q2: Usual Spend -->
+        <div class="question-group" data-qid="usual_spend" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            What do you usually spend on one small gift or decor item? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid grid-2col">
+            <div class="option-card" data-value="Below Rs 500">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Below ₹500</div>
+            </div>
+            <div class="option-card" data-value="Rs 500 to Rs 799">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹500 to ₹799</div>
+            </div>
+            <div class="option-card" data-value="Rs 800 to Rs 1,099">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹800 to ₹1,099</div>
+            </div>
+            <div class="option-card" data-value="Rs 1,100 to Rs 1,499">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹1,100 to ₹1,499</div>
+            </div>
+            <div class="option-card" data-value="Rs 1,500 or more">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹1,500 or more</div>
+            </div>
+            <div class="option-card" data-value="It depends or I am not sure">
+              <div class="radio-indicator"></div>
+              <div class="option-text">It depends / Not sure</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Section 2 — Product Idea & Concepts -->
+    <div class="survey-step" id="step2">
+      <div class="card-box">
+        <h3 class="card-title">Section 2 — Product idea</h3>
+        
+        <div class="context-banner">
+          <h4>Product Concept Preview</h4>
+          <p>Imagine a small online brand selling original 3D printed character pots for desks and home spaces. The character is a decorative outer pot. A removable pot inside holds the soil and plant, and a saucer catches extra water. Customers can buy the pot alone or choose a plant option. Some details can be personalised.</p>
+        </div>
+
+        <!-- Q3: Reason to consider -->
+        <div class="question-group" data-qid="consider_reason" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            What would be your most likely reason to consider this product? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid">
+            <div class="option-card" data-value="A gift for a friend or family member">
+              <div class="radio-indicator"></div>
+              <div class="option-text">A gift for a friend or family member</div>
+            </div>
+            <div class="option-card" data-value="A gift for a colleague">
+              <div class="radio-indicator"></div>
+              <div class="option-text">A gift for a colleague</div>
+            </div>
+            <div class="option-card" data-value="For my work or study desk">
+              <div class="radio-indicator"></div>
+              <div class="option-text">For my work or study desk</div>
+            </div>
+            <div class="option-card" data-value="For my home decor">
+              <div class="radio-indicator"></div>
+              <div class="option-text">For my home decor</div>
+            </div>
+            <div class="option-card" data-value="For a company, team or event">
+              <div class="radio-indicator"></div>
+              <div class="option-text">For a company, team or event</div>
+            </div>
+            <div class="option-card" data-value="Other">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Other</div>
+            </div>
+          </div>
+          <div class="other-input-container">
+            <input type="text" class="text-input other-text-input" placeholder="Please specify your reason...">
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q4: Appeal Rating -->
+        <div class="question-group" data-qid="appeal_rating" data-qtype="rating" data-required="true">
+          <div class="question-label">
+            Overall, how appealing is this product idea to you? <span class="required-star">*</span>
+          </div>
+          <div class="rating-container">
+            <div class="rating-btn" data-value="1">
+              <div class="rating-number">1</div>
+              <div class="rating-label-text">Not at all appealing</div>
+            </div>
+            <div class="rating-btn" data-value="2">
+              <div class="rating-number">2</div>
+              <div class="rating-label-text">Slightly</div>
+            </div>
+            <div class="rating-btn" data-value="3">
+              <div class="rating-number">3</div>
+              <div class="rating-label-text">Neutral</div>
+            </div>
+            <div class="rating-btn" data-value="4">
+              <div class="rating-number">4</div>
+              <div class="rating-label-text">Appealing</div>
+            </div>
+            <div class="rating-btn" data-value="5">
+              <div class="rating-number">5</div>
+              <div class="rating-label-text">Very appealing</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q5: Concept Design Choice -->
+        <div class="question-group" data-qid="first_collection_design" data-qtype="concept_cards" data-required="true">
+          <div class="question-label">
+            Which design would you most like to see in the first collection? <span class="required-star">*</span>
+          </div>
+          <div class="question-hint">Note: These are early design ideas, not final product photos</div>
+          
+          <div class="concepts-grid">
+            <div class="concept-card" data-value="Concept A Panda">
+              <div class="concept-img-wrapper">
+                <img src="panda.JPG" alt="Concept A Panda Planter" class="concept-img" onerror="this.onerror=null; this.src='assets/panda.JPG';">
+              </div>
+              <div class="concept-body">
+                <div class="radio-indicator"></div>
+                <div class="concept-title">Concept A Panda</div>
+              </div>
+            </div>
+
+            <div class="concept-card" data-value="Concept B Meditating monk">
+              <div class="concept-img-wrapper">
+                <img src="monk.JPG" alt="Concept B Meditating Monk Planter" class="concept-img" onerror="this.onerror=null; this.src='assets/monk.JPG';">
+              </div>
+              <div class="concept-body">
+                <div class="radio-indicator"></div>
+                <div class="concept-title">Concept B Meditating Monk</div>
+              </div>
+            </div>
+
+            <div class="concept-card" data-value="Concept C Cute green monster">
+              <div class="concept-img-wrapper">
+                <img src="monster.JPG" alt="Concept C Cute Green Monster Planter" class="concept-img" onerror="this.onerror=null; this.src='assets/monster.JPG';">
+              </div>
+              <div class="concept-body">
+                <div class="radio-indicator"></div>
+                <div class="concept-title">Concept C Cute Green Monster</div>
+              </div>
+            </div>
+
+            <div class="concept-card" data-value="other" style="justify-content: center; align-items: center; padding: 24px 16px;">
+              <div class="concept-body" style="flex-direction: column; text-align: center;">
+                <div class="radio-indicator"></div>
+                <div class="concept-title" style="margin-top: 8px;">Suggest another design idea</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="other-input-container">
+            <input type="text" class="text-input other-text-input" placeholder="Describe the character or design you'd love to see...">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Section 3 — Product Choices -->
+    <div class="survey-step" id="step3">
+      <div class="card-box">
+        <h3 class="card-title">Section 3 — Product choices</h3>
+        
+        <div class="context-banner">
+          <h4>Product Details & Features</h4>
+          <p>Imagine the character pot as a small 3D-printed decorative pot for a desk or home. It includes a removable inner liner for the plant and a saucer to catch extra water.</p>
+        </div>
+
+        <!-- Q6: Prefer most -->
+        <div class="question-group" data-qid="product_option_preference" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            Which option would you prefer most? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid">
+            <div class="option-card" data-value="Character pot only">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Character pot only</div>
+            </div>
+            <div class="option-card" data-value="Ready to display kit with pot, liner, live plant and care card">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Ready to display kit (pot + liner + live plant + care card)</div>
+            </div>
+            <div class="option-card" data-value="Grow it yourself kit with pot, liner, seeds, dry growing mix and care card">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Grow it yourself kit (pot + liner + seeds + dry mix + care card)</div>
+            </div>
+            <div class="option-card" data-value="I am not sure">
+              <div class="radio-indicator"></div>
+              <div class="option-text">I am not sure</div>
+            </div>
+            <div class="option-card" data-value="Other">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Other</div>
+            </div>
+          </div>
+          <div class="other-input-container">
+            <input type="text" class="text-input other-text-input" placeholder="Please specify your preference...">
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q7: Personalisation option -->
+        <div class="question-group" data-qid="personalisation_preference" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            Which one personalisation option would matter most to you? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid grid-2col">
+            <div class="option-card" data-value="Pot colour">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Pot colour</div>
+            </div>
+            <div class="option-card" data-value="Recipient name">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Recipient name</div>
+            </div>
+            <div class="option-card" data-value="Short message">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Short message</div>
+            </div>
+            <div class="option-card" data-value="Character expression or pose">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Character expression or pose</div>
+            </div>
+            <div class="option-card" data-value="Plant choice">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Plant choice</div>
+            </div>
+            <div class="option-card" data-value="Other">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Other</div>
+            </div>
+          </div>
+          <div class="other-input-container">
+            <input type="text" class="text-input other-text-input" placeholder="Please specify personalisation choice...">
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q8: Biggest Concern -->
+        <div class="question-group" data-qid="biggest_concern" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            What would be your biggest concern? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid">
+            <div class="option-card" data-value="The real 3D print may look cheap">
+              <div class="radio-indicator"></div>
+              <div class="option-text">The real 3D print may look cheap</div>
+            </div>
+            <div class="option-card" data-value="The design may look childish">
+              <div class="radio-indicator"></div>
+              <div class="option-text">The design may look childish</div>
+            </div>
+            <div class="option-card" data-value="Durability, water or drainage">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Durability, water or drainage</div>
+            </div>
+            <div class="option-card" data-value="Keeping the plant alive">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Keeping the plant alive</div>
+            </div>
+            <div class="option-card" data-value="Damage during delivery">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Damage during delivery</div>
+            </div>
+            <div class="option-card" data-value="The price may be too high">
+              <div class="radio-indicator"></div>
+              <div class="option-text">The price may be too high</div>
+            </div>
+            <div class="option-card" data-value="I have no major concern">
+              <div class="radio-indicator"></div>
+              <div class="option-text">I have no major concern</div>
+            </div>
+            <div class="option-card" data-value="Other">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Other</div>
+            </div>
+          </div>
+          <div class="other-input-container">
+            <input type="text" class="text-input other-text-input" placeholder="Specify your concern...">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Section 4 — Brand and Buying -->
+    <div class="survey-step" id="step4">
+      <div class="card-box">
+        <h3 class="card-title">Section 4 — Brand and buying</h3>
+
+        <div class="context-banner">
+          <h4>The FifthBench Story</h4>
+          <p>FifthBench is inspired by the bench where our founders first met. More than seven years later, that friendship has grown into a shared ambition to build thoughtful products that bring people closer to nature. Through our work, we hope to encourage greener spaces, more planting, and a stronger sense of care for the environment.</p>
+        </div>
+
+        <!-- Q9: Strongest Brand Reason -->
+        <div class="question-group" data-qid="strongest_brand_reason" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            Which one feels like the strongest reason to choose this brand? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid">
+            <div class="option-card" data-value="Original character pots with personality">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Original character pots with personality</div>
+            </div>
+            <div class="option-card" data-value="A complete plant gift in one box">
+              <div class="radio-indicator"></div>
+              <div class="option-text">A complete plant gift in one box</div>
+            </div>
+            <div class="option-card" data-value="A personalised gift made for the recipient">
+              <div class="radio-indicator"></div>
+              <div class="option-text">A personalised gift made for the recipient</div>
+            </div>
+            <div class="option-card" data-value="Small batch characters released over time">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Small batch characters released over time</div>
+            </div>
+            <div class="option-card" data-value="A high quality ordering, packaging and delivery experience">
+              <div class="radio-indicator"></div>
+              <div class="option-text">A high quality ordering, packaging and delivery experience</div>
+            </div>
+            <div class="option-card" data-value="The story of longtime friends building a nature-focused brand together">
+              <div class="radio-indicator"></div>
+              <div class="option-text">The story of longtime friends building a nature-focused brand together</div>
+            </div>
+            <div class="option-card" data-value="Other">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Other</div>
+            </div>
+          </div>
+          <div class="other-input-container">
+            <input type="text" class="text-input other-text-input" placeholder="Specify your reason...">
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q10: Trust Factors (Max 3) -->
+        <div class="question-group" data-qid="brand_trust_factors" data-qtype="checkbox" data-max-select="3" data-required="true">
+          <div class="question-label">
+            What would you need to see before trusting the brand enough to order? <span class="required-star">*</span>
+          </div>
+          <div class="question-hint">Select up to 3 choices</div>
+          <div class="options-grid">
+            <div class="option-card" data-value="Real photos and videos of the finished product">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">Real photos and videos of the finished product</div>
+            </div>
+            <div class="option-card" data-value="Exact size, material and print finish">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">Exact size, material and print finish</div>
+            </div>
+            <div class="option-card" data-value="Reviews from real customers">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">Reviews from real customers</div>
+            </div>
+            <div class="option-card" data-value="Photos of the packaging">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">Photos of the packaging</div>
+            </div>
+            <div class="option-card" data-value="A clear delivery date and tracking">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">A clear delivery date and tracking</div>
+            </div>
+            <div class="option-card" data-value="A clear damage and replacement policy">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">A clear damage and replacement policy</div>
+            </div>
+            <div class="option-card" data-value="A secure website and payment process">
+              <div class="checkbox-indicator"></div>
+              <div class="option-text">A secure website and payment process</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q11: Order Channel -->
+        <div class="question-group" data-qid="order_channel" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            Where would you feel most comfortable placing the order? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid grid-2col">
+            <div class="option-card" data-value="The brand website">
+              <div class="radio-indicator"></div>
+              <div class="option-text">The brand website</div>
+            </div>
+            <div class="option-card" data-value="Instagram shop or an Instagram link">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Instagram shop or link</div>
+            </div>
+            <div class="option-card" data-value="Amazon, Flipkart or another marketplace">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Amazon / Flipkart</div>
+            </div>
+            <div class="option-card" data-value="WhatsApp">
+              <div class="radio-indicator"></div>
+              <div class="option-text">WhatsApp</div>
+            </div>
+            <div class="option-card" data-value="A physical shop, market or event">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Physical shop or market</div>
+            </div>
+            <div class="option-card" data-value="No preference">
+              <div class="radio-indicator"></div>
+              <div class="option-text">No preference</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5: Section 5 — Pre-order, price and final feedback -->
+    <div class="survey-step" id="step5">
+      <div class="card-box">
+        <h3 class="card-title">Section 5 — Pre-order, price and final feedback</h3>
+
+        <!-- Q12: Pre-order comfort -->
+        <div class="question-group" data-qid="preorder_comfort" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            Would you be comfortable ordering through a pre-order if the production and delivery date were clearly shown? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid">
+            <div class="option-card" data-value="Yes">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Yes</div>
+            </div>
+            <div class="option-card" data-value="Probably yes">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Probably yes</div>
+            </div>
+            <div class="option-card" data-value="Not sure">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Not sure</div>
+            </div>
+            <div class="option-card" data-value="Probably no">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Probably no</div>
+            </div>
+            <div class="option-card" data-value="No, I would only buy ready stock">
+              <div class="radio-indicator"></div>
+              <div class="option-text">No, I would only buy ready stock</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Full Kit Info Feature Card -->
+        <div class="kit-feature-card">
+          <div>
+            <div class="kit-title">Full Kit / Customised Kit Specification</div>
+            <div class="kit-desc">One original 10 to 11 cm character outer pot, removable liner, saucer, low maintenance live plant already potted, care card and protective gift-ready packaging. (Delivery charged separately).</div>
+          </div>
+        </div>
+
+        <!-- Q13: Reasonable Kit Price -->
+        <div class="question-group" data-qid="reasonable_kit_price" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            What total product price feels reasonable for this complete kit? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid grid-2col">
+            <div class="option-card" data-value="Below Rs 700">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Below ₹700</div>
+            </div>
+            <div class="option-card" data-value="Rs 700 to Rs 899">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹700 to ₹899</div>
+            </div>
+            <div class="option-card" data-value="Rs 900 to Rs 1,099">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹900 to ₹1,099</div>
+            </div>
+            <div class="option-card" data-value="Rs 1,100 to Rs 1,299">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹1,100 to ₹1,299</div>
+            </div>
+            <div class="option-card" data-value="Rs 1,300 to Rs 1,499">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹1,300 to ₹1,499</div>
+            </div>
+            <div class="option-card" data-value="Rs 1,500 or more">
+              <div class="radio-indicator"></div>
+              <div class="option-text">₹1,500 or more</div>
+            </div>
+            <div class="option-card" data-value="I am not sure">
+              <div class="radio-indicator"></div>
+              <div class="option-text">I am not sure</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q14: Purchase Likelihood at 899 -->
+        <div class="question-group" data-qid="purchase_likelihood_899" data-qtype="radio" data-required="true">
+          <div class="question-label">
+            If this complete kit cost ₹899 plus delivery, how likely would you be to buy it in the next three months if you needed a gift or desk/home item? <span class="required-star">*</span>
+          </div>
+          <div class="options-grid">
+            <div class="option-card" data-value="Definitely would buy">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Definitely would buy</div>
+            </div>
+            <div class="option-card" data-value="Probably would buy">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Probably would buy</div>
+            </div>
+            <div class="option-card" data-value="Not sure">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Not sure</div>
+            </div>
+            <div class="option-card" data-value="Probably would not buy">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Probably would not buy</div>
+            </div>
+            <div class="option-card" data-value="Definitely would not buy">
+              <div class="radio-indicator"></div>
+              <div class="option-text">Definitely would not buy</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <!-- Q15: Open-ended feedback -->
+        <div class="question-group" data-required="false">
+          <div class="question-label">
+            What is the one thing you would change or improve about this product idea?
+          </div>
+          <div class="question-hint">Optional feedback</div>
+          <textarea class="feedback-textarea" data-qid="improvement_idea" placeholder="Share your thoughts, suggestions, or features you would like to see..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6: Completion Screen -->
+    <div class="survey-step" id="completionStep">
+      <div class="card-box completion-box">
+        <div class="celebration-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Thank You for Your Feedback</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">Your insights are invaluable in shaping FifthBench character planters.</p>
+
+        <div class="summary-container" id="summaryContainer">
+          <!-- Dynamically populated summary -->
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <button class="btn btn-secondary" id="downloadJsonBtn">
+            Download Response JSON
+          </button>
+          <button class="btn btn-primary" id="restartBtn">
+            Retake Survey
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Controls Footer -->
+    <div class="card-controls">
+      <button class="btn btn-secondary" id="prevBtn">
+        <span>←</span> Previous
+      </button>
+      <button class="btn btn-primary" id="nextBtn">
+        Next Question <span>→</span>
+      </button>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
